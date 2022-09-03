@@ -37,5 +37,6 @@ class GameUnitTests {
         game.incrementScore()
 
         Assert.assertEquals(10, game.highestScore)
+
     }
 }
