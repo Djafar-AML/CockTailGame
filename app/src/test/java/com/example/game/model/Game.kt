@@ -8,8 +8,11 @@ class Game(highest: Int = 0) {
         private set
 
     fun incrementScore() {
+
         currentScore = currentScore.inc()
-        highestScore = highestScore.inc()
+
+        if (currentScore > highestScore)
+            highestScore = currentScore
     }
 
 }
