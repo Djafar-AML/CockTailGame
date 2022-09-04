@@ -7,6 +7,6 @@ class Question(val correctOption: String,
         private set
 
     fun answer(option: String) {
-        // No implementation yet
+        answeredOption = option
     }
 }
