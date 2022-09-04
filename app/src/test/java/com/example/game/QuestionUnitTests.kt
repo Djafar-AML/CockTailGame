@@ -15,5 +15,16 @@ class QuestionUnitTests {
 
     }
 
+    @Test
+    fun whenAnswering_shouldHaveAnsweredOption() {
+
+        val question = Question("Correct", "Incorrect")
+
+        question.answer("Incorrect")
+
+        Assert.assertEquals("Incorrect", question.answeredOption)
+
+    }
+
 
 }
