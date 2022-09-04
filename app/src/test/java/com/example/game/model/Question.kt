@@ -6,7 +6,8 @@ class Question(val correctOption: String,
     var answeredOption: String? = null
         private set
 
-    fun answer(option: String) {
+    fun answer(option: String): Boolean {
         answeredOption = option
+        return true
     }
 }
