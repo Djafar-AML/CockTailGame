@@ -37,4 +37,15 @@ class QuestionUnitTests {
 
     }
 
+    @Test
+    fun whenAnswering_withIncorrectOption_shouldReturnFalse() {
+
+        val question = Question("Correct", "Incorrect")
+
+        val result = question.answer("Incorrect")
+
+        Assert.assertFalse(result)
+
+    }
+
 }
