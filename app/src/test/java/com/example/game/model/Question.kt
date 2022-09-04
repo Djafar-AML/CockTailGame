@@ -8,6 +8,6 @@ class Question(val correctOption: String,
 
     fun answer(option: String): Boolean {
         answeredOption = option
-        return true
+        return correctOption == answeredOption
     }
 }
