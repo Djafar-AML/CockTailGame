@@ -1,5 +1,6 @@
 package com.example.game
 
+import com.example.game.model.Question
 import org.junit.Assert
 import org.junit.Test
 
@@ -10,7 +11,7 @@ class QuestionUnitTests {
 
         val question = Question("Correct", "Incorrect")
 
-        Assert.assertNull(question.answeredOtion)
+        Assert.assertNull(question.answeredOption)
 
     }
 
