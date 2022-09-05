@@ -1,6 +1,6 @@
-package com.example.game
+package com.example.game.model
 
-import com.example.game.model.Game
+import com.example.cocktailgame.model.Game
 import org.junit.Assert
 import org.junit.Test
 
@@ -37,6 +37,19 @@ class GameUnitTests {
         game.incrementScore()
 
         Assert.assertEquals(10, game.highestScore)
+
+    }
+
+    @Test
+    fun whenGettingNextQuestion_shouldReturnIt() {
+
+        val question = Question("Correct", "Incorrect")
+        val questions = listOf(question)
+        val game = Game(questions)
+
+        val nextQuestion = game.nextQuestion()
+
+        Assert.assertSame(question, nextQuestion)
 
     }
 }

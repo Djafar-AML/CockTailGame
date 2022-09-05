@@ -1,6 +1,5 @@
-package com.example.game
+package com.example.game.model
 
-import com.example.game.model.Question
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
