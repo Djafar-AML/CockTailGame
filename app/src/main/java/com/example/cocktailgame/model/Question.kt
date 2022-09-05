@@ -18,4 +18,11 @@ class Question(val correctOption: String,
         answeredOption = option
         return isAnsweredCorrectly
     }
+
+    fun shuffleOptions(): List<String> {
+
+        val options = listOf(correctOption, incorrectOption)
+
+        return emptyList()
+    }
 }
