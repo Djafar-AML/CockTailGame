@@ -52,4 +52,18 @@ class GameUnitTests {
         Assert.assertSame(question, nextQuestion)
 
     }
+
+    @Test
+    fun whenGettingNextQuestion_withoutMoreQuestions_shouldReturnNull() {
+
+        val question = Question("Correct", "Incorrect")
+        val questions = listOf(question)
+        val game = Game(questions)
+
+        game.nextQuestion()
+        val nextQuestion = game.nextQuestion()
+
+        Assert.assertNull(nextQuestion)
+
+    }
 }
