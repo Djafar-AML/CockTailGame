@@ -26,6 +26,12 @@ class Game(highest: Int = 0) {
     }
 
     fun nextQuestion(): Question? {
+
+        if (questionIndex + 1 < questions.size){
+            questionIndex = questionIndex.inc()
+            return questions[questionIndex]
+        }
+
         return null
     }
 }
