@@ -44,6 +44,7 @@ class QuestionUnitTests {
     fun whenAnswering_withIncorrectOption_shouldReturnFalse() {
 
         val result = question.answer("Incorrect")
+
         Assert.assertFalse(result)
 
     }
