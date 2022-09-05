@@ -23,6 +23,6 @@ class Question(val correctOption: String,
 
         val options = listOf(correctOption, incorrectOption)
 
-        return emptyList()
+        return options.shuffled()
     }
 }
