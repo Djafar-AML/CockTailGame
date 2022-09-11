@@ -1,6 +1,5 @@
 package com.example.cocktailgame.model
 
-import com.example.game.model.Question
 
 class Game(highest: Int = 0) {
 

@@ -1,4 +1,4 @@
-package com.example.game.model
+package com.example.cocktailgame.model
 
 class Question(val correctOption: String,
                val incorrectOption: String) {
