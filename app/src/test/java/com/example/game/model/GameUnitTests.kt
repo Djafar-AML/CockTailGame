@@ -4,10 +4,8 @@ import com.example.cocktailgame.model.Game
 import com.example.cocktailgame.model.Question
 import org.junit.Assert
 import org.junit.Test
-import org.mockito.kotlin.eq
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.times
-import org.mockito.kotlin.verify
+import org.mockito.ArgumentMatchers.anyString
+import org.mockito.kotlin.*
 
 
 class GameUnitTests {
@@ -81,6 +79,20 @@ class GameUnitTests {
         game.answer(question, "Option")
 
         verify(question, times(1)).answer(eq("Option"))
+
+    }
+
+    @Test
+    fun whenAnsweringCorrectly_shouldIncrementCurrentScore() {
+
+        val question = mock<Question>()
+        whenever(question.answer(anyString())).thenReturn(true)
+
+        val game = Game(listOf(question))
+
+        game.answer(question, "Option")
+
+        Assert.assertEquals(1, game.currentScore)
 
     }
 }
