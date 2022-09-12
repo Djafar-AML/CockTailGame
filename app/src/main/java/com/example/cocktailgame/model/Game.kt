@@ -35,7 +35,10 @@ class Game(highest: Int = 0) {
     }
 
     fun answer(question: Question, option: String) {
-        question.answer(option)
-        incrementScore()
+
+        val result = question.answer(option)
+
+        if (result)
+            incrementScore()
     }
 }
