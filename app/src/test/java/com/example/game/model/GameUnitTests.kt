@@ -2,6 +2,7 @@ package com.example.game.model
 
 import com.example.cocktailgame.model.Game
 import com.example.cocktailgame.model.Question
+import com.example.cocktailgame.model.Score
 import org.junit.Assert
 import org.junit.Test
 import org.mockito.ArgumentMatchers.anyString
@@ -10,38 +11,6 @@ import org.mockito.kotlin.*
 
 class GameUnitTests {
 
-    @Test
-    fun whenIncrementingScore_shouldIncrementCurrentScore() {
-
-        val game = Game()
-
-        game.incrementScore()
-
-        Assert.assertEquals("Current score should have been 1", 1, game.currentScore)
-
-    }
-
-    @Test
-    fun whenIncrementingScore_aboveHighScore_shouldAlsoIncrementHighScore() {
-
-        val game = Game()
-
-        game.incrementScore()
-
-        Assert.assertEquals("Current high score should have been 1", 1, game.highestScore)
-
-    }
-
-    @Test
-    fun whenIncrementingScore_belowHighScore_shouldNotIncrementHighScore() {
-
-        val game = Game(10)
-
-        game.incrementScore()
-
-        Assert.assertEquals(10, game.highestScore)
-
-    }
 
     @Test
     fun whenGettingNextQuestion_shouldReturnIt() {
@@ -88,11 +57,13 @@ class GameUnitTests {
         val question = mock<Question>()
         whenever(question.answer(anyString())).thenReturn(true)
 
-        val game = Game(listOf(question))
+        val score = mock<Score>()
+
+        val game = Game(listOf(question), score)
 
         game.answer(question, "Option")
 
-        Assert.assertEquals(1, game.currentScore)
+        verify(score, times(1)).increment()
 
     }
 
@@ -102,10 +73,13 @@ class GameUnitTests {
         val question = mock<Question>()
         whenever(question.answer(anyString())).thenReturn(false)
 
-        val game = Game(listOf(question))
+        val score = mock<Score>()
+
+        val game = Game(listOf(question), score)
+
         game.answer(question, "Option")
 
-        Assert.assertEquals(0, game.currentScore)
+        verify(score, never()).increment()
 
     }
 }

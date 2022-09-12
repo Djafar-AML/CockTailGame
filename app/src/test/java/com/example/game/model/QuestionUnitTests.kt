@@ -62,8 +62,11 @@ class QuestionUnitTests {
     fun whenTheQuestionOptions_areShuffledList_shouldReturnTrue() {
 
         val question = Question("Correct", "Incorrect")
+
         val options = question.shuffleOptions()
+
         val result = options.containsAll(listOf(question.correctOption, question.incorrectOption))
+
         Assert.assertTrue(result)
     }
 }
