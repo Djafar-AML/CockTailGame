@@ -4,6 +4,10 @@ import com.example.cocktailgame.model.Game
 import com.example.cocktailgame.model.Question
 import org.junit.Assert
 import org.junit.Test
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.times
+import org.mockito.kotlin.verify
 
 
 class GameUnitTests {
@@ -65,6 +69,18 @@ class GameUnitTests {
         val nextQuestion = game.nextQuestion()
 
         Assert.assertNull(nextQuestion)
+
+    }
+
+    @Test
+    fun whenAnswering_shouldDelegateToQuestion() {
+
+        val question = mock<Question>()
+        val game = Game(listOf(question))
+
+        game.answer(question, "Option")
+
+        verify(question, times(1)).answer(eq("Option"))
 
     }
 }

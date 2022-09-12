@@ -5,7 +5,7 @@ class Game(highest: Int = 0) {
 
     private var questions = listOf<Question>()
 
-    constructor(questions: List<Question>) : this(){
+    constructor(questions: List<Question>) : this() {
         this.questions = questions
     }
 
@@ -32,5 +32,8 @@ class Game(highest: Int = 0) {
         }
 
         return null
+    }
+
+    fun answer(question: Question, option: String) {
     }
 }
