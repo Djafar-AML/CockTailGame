@@ -16,5 +16,6 @@ class RepoImpl(
         editor.apply()
     }
 
-    override fun getHighScore() = 0
+    override fun getHighScore() = sharedPrefs.getInt(HIGH_SCORE_KEY, 0)
+
 }
