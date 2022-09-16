@@ -15,4 +15,6 @@ class RepoImpl(
         editor.putInt(HIGH_SCORE_KEY, score)
         editor.apply()
     }
+
+    override fun getHighScore() = 0
 }

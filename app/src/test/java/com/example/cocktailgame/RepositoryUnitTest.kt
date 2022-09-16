@@ -4,6 +4,7 @@ import android.content.SharedPreferences
 import com.example.cocktailgame.common.network.CocktailsApi
 import com.example.cocktailgame.common.repo.RepoImpl
 import org.junit.Test
+import org.mockito.ArgumentMatchers.anyString
 import org.mockito.kotlin.*
 
 class RepositoryUnitTest {
@@ -30,5 +31,18 @@ class RepositoryUnitTest {
             verify(sharedPrefsEditor).putInt(any(), eq(score))
             verify(sharedPrefsEditor).apply()
         }
+    }
+
+    @Test
+    fun getScore_shouldGetFromSharedPrefs() {
+
+        val api: CocktailsApi = mock()
+        val sharedPrefs: SharedPreferences = mock()
+
+        val repo = RepoImpl(api, sharedPrefs)
+
+        repo.getHighScore()
+
+        verify(sharedPrefs).getInt(any(), any())
     }
 }
