@@ -2,25 +2,32 @@ package com.example.cocktailgame
 
 import android.content.SharedPreferences
 import com.example.cocktailgame.common.network.CocktailsApi
+import com.example.cocktailgame.common.repo.Repo
 import com.example.cocktailgame.common.repo.RepoImpl
+import org.junit.Before
 import org.junit.Test
-import org.mockito.ArgumentMatchers.anyString
 import org.mockito.kotlin.*
 
 class RepositoryUnitTest {
 
-    @Test
-    fun saveScore_shouldShouldSaveToSharedPrefs() {
+    private lateinit var repo: Repo
+    private lateinit var api: CocktailsApi
+    private lateinit var sharedPrefs: SharedPreferences
+    private lateinit var sharedPrefsEditor: SharedPreferences.Editor
 
-        val api: CocktailsApi = mock()
+    @Before
+    fun setup() {
 
-        val sharedPrefsEditor: SharedPreferences.Editor = mock()
-
-        val sharedPrefs: SharedPreferences = mock()
-
+        api = mock()
+        sharedPrefs = mock()
+        sharedPrefsEditor = mock()
         whenever(sharedPrefs.edit()).thenReturn(sharedPrefsEditor)
 
-        val repo = RepoImpl(api, sharedPrefs)
+        repo = RepoImpl(api, sharedPrefs)
+    }
+
+    @Test
+    fun saveScore_shouldShouldSaveToSharedPrefs() {
 
         val score = 100
         repo.saveHighScore(score)
@@ -35,11 +42,6 @@ class RepositoryUnitTest {
 
     @Test
     fun getScore_shouldGetFromSharedPrefs() {
-
-        val api: CocktailsApi = mock()
-        val sharedPrefs: SharedPreferences = mock()
-
-        val repo = RepoImpl(api, sharedPrefs)
 
         repo.getHighScore()
 
