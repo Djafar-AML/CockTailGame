@@ -47,4 +47,23 @@ class RepositoryUnitTest {
 
         verify(sharedPrefs).getInt(any(), any())
     }
+
+    @Test
+    fun saveScore_shouldNotSaveToSharedPrefsIfLower() {
+
+        val previousleySavedHighScore = 100
+        val newHighScore = 10
+        val spyRepo = spy(repo)
+
+        doReturn(previousleySavedHighScore)
+            .whenever(spyRepo)
+            .getHighScore()
+
+        spyRepo.saveHighScore(newHighScore)
+
+        verify(sharedPrefsEditor, never())
+                .putInt(any(), eq(newHighScore))
+
+    }
+
 }
