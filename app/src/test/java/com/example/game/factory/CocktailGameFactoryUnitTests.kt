@@ -55,5 +55,7 @@ class CocktailGameFactoryUnitTests {
             callback.onSuccess(cocktails)
 
         }.whenever(repository).getAlcoholic(any())
+
     }
+
 }
