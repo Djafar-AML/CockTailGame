@@ -58,4 +58,29 @@ class CocktailGameFactoryUnitTests {
 
     }
 
+    @Test
+    fun buildGame_shouldCallOnError() {
+
+        val callback = mock<CocktailGameFactory.Callback>()
+
+        setupRepositoryWithError(repository)
+
+        factory.buildGame(callback)
+
+        verify(callback).onError()
+
+    }
+
+    private fun setupRepositoryWithError(repository: Repo) {
+
+        doAnswer {
+
+            val callback: RepositoryCallback<List<Cocktail>, String> = it.getArgument(0)
+
+            callback.onError("Error!")
+
+        }.whenever(repository).getAlcoholic(any())
+
+    }
+
 }
