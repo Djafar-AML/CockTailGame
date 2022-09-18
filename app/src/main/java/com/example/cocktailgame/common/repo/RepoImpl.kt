@@ -1,6 +1,7 @@
 package com.example.cocktailgame.common.repo
 
 import android.content.SharedPreferences
+import com.example.cocktailgame.common.network.Cocktail
 import com.example.cocktailgame.common.network.CocktailsApi
 
 private const val HIGH_SCORE_KEY = "HIGH_SCORE_KEY"
@@ -21,5 +22,9 @@ class RepoImpl(
     }
 
     override fun getHighScore() = sharedPrefs.getInt(HIGH_SCORE_KEY, 0)
+
+    override fun getAlcoholic(callback: RepositoryCallback<List<Cocktail>, String>) {
+
+    }
 
 }
